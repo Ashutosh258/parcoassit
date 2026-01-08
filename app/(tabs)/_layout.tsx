@@ -1,12 +1,23 @@
 import { Tabs } from 'expo-router';
-import { Ionicons } from '@expo/vector-icons'; // Install: npx expo install @expo/vector-icons
+import { Ionicons } from '@expo/vector-icons';
+import { useTheme } from '../../hooks/useTheme';
 
 export default function TabLayout() {
+  const { theme } = useTheme();
+  
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: '#007AFF',
-        tabBarInactiveTintColor: 'gray',
+        tabBarActiveTintColor: '#22D3EE',
+        tabBarInactiveTintColor: theme.tabInactive,
+        tabBarStyle: {
+          backgroundColor: theme.background,
+          borderTopColor: theme.border,
+          borderTopWidth: 1,
+          paddingTop: 8,
+          paddingBottom: 8,
+          height: 70,
+        },
         headerShown: false,
       }}
     >
@@ -14,21 +25,27 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'Home',
-          tabBarIcon: ({ color }) => <Ionicons name="home-outline" size={28} color={color} />,
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons name={focused ? "home" : "home-outline"} size={24} color={color} />
+          ),
         }}
       />
       <Tabs.Screen
         name="generate"
         options={{
-          title: 'Generate QR',
-          tabBarIcon: ({ color }) => <Ionicons name="qr-code-outline" size={28} color={color} />,
+          title: 'Generate',
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons name={focused ? "qr-code" : "qr-code-outline"} size={24} color={color} />
+          ),
         }}
       />
       <Tabs.Screen
         name="scan"
         options={{
-          title: 'Scan QR',
-          tabBarIcon: ({ color }) => <Ionicons name="scan-outline" size={28} color={color} />,
+          title: 'Scan',
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons name={focused ? "scan" : "scan-outline"} size={24} color={color} />
+          ),
         }}
       />
     </Tabs>
