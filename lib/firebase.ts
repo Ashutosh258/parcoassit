@@ -2,11 +2,7 @@ import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
-   apiKey: "AIzaSyDfy7lRDA58Py5xeCaXF7cqUN0FOx96hX0",
-  authDomain: "parco-assit.firebaseapp.com",
-  projectId: "parco-assit",
-  storageBucket: "parco-assit.firebasestorage.app",
-  appId: "1:167242165994:ios:8dc39b0ac5afa9fda73193",
+
 };
 
 const app = initializeApp(firebaseConfig);
